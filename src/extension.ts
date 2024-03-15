@@ -1,12 +1,15 @@
 import * as vscode from 'vscode';
+import path from 'node:path';
+import fs from 'node:fs';
 
+let panel: vscode.WebviewPanel|null = null;
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "Toolbox" is now active!');
 
   let disposable = vscode.commands.registerCommand('toolbox.helloWorld', () => {
     vscode.window.showInformationMessage('Hello World from toolbox!');
 
-    const panel = vscode.window.createWebviewPanel(
+    panel = vscode.window.createWebviewPanel(
       'toolbox',
       '工具箱',
       vscode.ViewColumn.One,
@@ -15,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
         enableScripts: true, // 运行 JS 执行
       }
     );
-    panel.webview.html = getWebviewContent();
+    panel.webview.html = getWebviewContent(context);
 
 		panel.webview.postMessage({text: 'I\'m VSCode extension'});
   });
@@ -25,16 +28,29 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() { }
 
-function getWebviewContent() {
+function getWebviewContent(context: vscode.ExtensionContext) {
+	// const isProduction = context.extensionMode === vscode.ExtensionMode.Production;
+	// console.log('---- isProduction ----:', isProduction);
+	const jsPath = vscode.Uri.file(
+		path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-CfLvyDuu.js')
+	);
+	const cssPath = vscode.Uri.file(
+		path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-B87vROlf.css')
+	);
+	let srcJsUrl = panel?.webview.asWebviewUri(jsPath).toString();
+	let srcCssUrl = panel?.webview.asWebviewUri(cssPath).toString();
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>工具箱</title>
+				<script type="module" crossorigin src="${srcJsUrl}"></script>
+    		<link rel="stylesheet" crossorigin href="${srcCssUrl}">
       </head>
       <body>
         <img src="https://dummyimage.com/400x400/000/fff.jpg&text=testimg" width="300" />
+				<div id="app"></div>
 				<p id="test"></p>
         <script>
           window.addEventListener('message', e => {
@@ -48,3 +64,4 @@ function getWebviewContent() {
       </body>
     </html>`;
 }
+
