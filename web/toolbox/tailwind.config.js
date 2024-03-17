@@ -5,5 +5,9 @@ export default {
     extend: {},
   },
   plugins: [],
+  // 解决与ant-design-vue样式冲突
+  corePlugins: {
+    preflight: false
+  }
 }
 
