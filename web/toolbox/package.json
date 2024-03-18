@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "ant-design-vue": "^4.1.2",
+    "color-convert": "^2.0.1",
+    "dayjs": "^1.11.10",
     "vue": "^3.4.21",
+    "vue-pick-colors": "^1.6.3",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

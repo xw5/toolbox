@@ -3,6 +3,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../pages/Home.vue';
 import UrlEncode from '../pages/UrlEncode.vue';
+import ColorConversion from '../pages/ColorConversion.vue';
+import TimeConversion from '../pages/TimeConversion.vue';
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -17,6 +19,14 @@ const routes = [
     path: '/url-encode',
     name: 'url-encode',
     component: UrlEncode
+  },{ 
+    path: '/color-conversion',
+    name: 'color-conversion',
+    component: ColorConversion
+  },{ 
+    path: '/time-conversion',
+    name: 'time-conversion',
+    component: TimeConversion
   },
 ];
 

@@ -14,7 +14,7 @@
     title: string;
     desc: string;
     img: string;
-    url: string;
+    pathName: string;
   }
 
   const tools = ref<Tool[]>([
@@ -22,12 +22,22 @@
       title: 'URL编码',
       desc: 'URL解码、编码工具',
       img: 'https://dummyimage.com/80x80/000/fff.jpg&text=testimg',
-      url: 'url-encode'
+      pathName: 'url-encode'
+    },{
+      title: '颜色转换',
+      desc: 'RGB、HSL 和 HSV 格式颜色互转',
+      img: 'https://dummyimage.com/80x80/000/fff.jpg&text=testimg',
+      pathName: 'color-conversion'
+    },{
+      title: '时间转换',
+      desc: '时间戳和日期格式互转工具',
+      img: 'https://dummyimage.com/80x80/000/fff.jpg&text=testimg',
+      pathName: 'time-conversion'
     }
   ]);
   const gotoPage = (tool: Tool) => {
     router.push({
-      name: tool.url
+      name: tool.pathName
     })
   }
 </script>
@@ -41,7 +51,7 @@
     @search="onSearch"
   />
   <ul class="flex flex-row flex-wrap justify-center list-none">
-    <li class="w-[268px] h-[80px] px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)]" v-for="(tool, index) in tools" :key="index" @click="gotoPage(tool)">
+    <li class="w-[268px] h-[80px] px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)] cursor-pointer" v-for="(tool, index) in tools" :key="index" @click="gotoPage(tool)">
       <img :src="tool.img" class="w-[70px] h-[70px] mr-[5px]" alt="">
       <div class="flex flex-col h-full justify-around">
         <h3 class="text-black text-[14px]">{{ tool.title }}</h3>
