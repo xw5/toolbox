@@ -5,6 +5,7 @@ import Home from '../pages/Home.vue';
 import UrlEncode from '../pages/UrlEncode.vue';
 import ColorConversion from '../pages/ColorConversion.vue';
 import TimeConversion from '../pages/TimeConversion.vue';
+import Base64Encode from '../pages/Base64Encode.vue';
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -27,6 +28,10 @@ const routes = [
     path: '/time-conversion',
     name: 'time-conversion',
     component: TimeConversion
+  },{ 
+    path: '/base64-encode',
+    name: 'base64-encode',
+    component: Base64Encode
   },
 ];
 

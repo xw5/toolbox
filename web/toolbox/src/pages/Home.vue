@@ -5,6 +5,7 @@
   import url from '../assets/url.png';
   import color from '../assets/color.png';
   import time from '../assets/time.png';
+  import base64 from '../assets/base64.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -37,6 +38,11 @@
       desc: '时间戳和日期格式互转工具',
       img: time,
       pathName: 'time-conversion'
+    },{
+      title: 'Base64',
+      desc: 'Base64编码和解码工具',
+      img: base64,
+      pathName: 'base64-encode'
     }
   ]);
   const gotoPage = (tool: Tool) => {
