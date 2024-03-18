@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full overflow-hidden">
-    <div class="min-w-[768px] w-full mx-auto flex flex-col items-center">
+  <div class="w-full h-full">
+    <div class="min-w-[768px] w-full h-full mx-auto flex flex-col items-center">
       <router-view></router-view>
     </div>
   </div>
