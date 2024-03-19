@@ -23,7 +23,13 @@
         "key": "ctrl+shift+alt+t",
         "command": "toolbox.toolbox"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [{
+        "command": "toolbox.toolbox",
+        "group": "navigation"
+      }]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

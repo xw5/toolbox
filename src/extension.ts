@@ -32,10 +32,10 @@ function getWebviewContent(context: vscode.ExtensionContext) {
 	// const isProduction = context.extensionMode === vscode.ExtensionMode.Production;
 	// console.log('---- isProduction ----:', isProduction);
 	const jsPath = vscode.Uri.file(
-		path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-323XVnxa.js')
+		path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-ldK6L7Yj.js')
 	);
 	const cssPath = vscode.Uri.file(
-		path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-BfA-fHGe.css')
+		path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-Bd6ESUIN.css')
 	);
 	let srcJsUrl = panel?.webview.asWebviewUri(jsPath).toString();
 	let srcCssUrl = panel?.webview.asWebviewUri(cssPath).toString();
