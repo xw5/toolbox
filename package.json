@@ -1,14 +1,16 @@
 {
   "name": "toolbox",
   "displayName": "Toolbox",
-  "description": "常用工具箱",
+  "description": "开发助手工具箱",
   "version": "0.0.1",
+  "publisher": "msxw",
   "engines": {
     "vscode": "^1.46.0"
   },
   "categories": [
     "Other"
   ],
+  "type": "module",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -51,12 +53,15 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "login": "vsce login msxw",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
-    "@types/vscode": "^1.87.0",
+    "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "@vscode/test-cli": "^0.0.6",

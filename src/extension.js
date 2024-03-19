@@ -1,0 +1,50 @@
+import * as vscode from 'vscode';
+import path from 'node:path';
+// import fs from 'node:fs';
+let panel = null;
+export function activate(context) {
+    console.log('Congratulations, your extension "Toolbox" is now active!');
+    let disposable = vscode.commands.registerCommand('toolbox.toolbox', () => {
+        // vscode.window.showInformationMessage('Hello World from toolbox!');
+        panel = vscode.window.createWebviewPanel('toolbox', '工具箱', vscode.ViewColumn.One, {
+            retainContextWhenHidden: true, // 保证 Webview 所在页面进入后台时不被释放
+            enableScripts: true, // 运行 JS 执行
+        });
+        panel.webview.html = getWebviewContent(context);
+        // panel.webview.postMessage({text: 'I\'m VSCode extension'});
+    });
+    context.subscriptions.push(disposable);
+}
+export function deactivate() { }
+function getWebviewContent(context) {
+    // const isProduction = context.extensionMode === vscode.ExtensionMode.Production;
+    // console.log('---- isProduction ----:', isProduction);
+    const jsPath = vscode.Uri.file(path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-ldK6L7Yj.js'));
+    const cssPath = vscode.Uri.file(path.join(context.extensionPath, 'web/toolbox/dist', 'assets/index-Bd6ESUIN.css'));
+    let srcJsUrl = panel?.webview.asWebviewUri(jsPath).toString();
+    let srcCssUrl = panel?.webview.asWebviewUri(cssPath).toString();
+    // <p id="test"></p>
+    // <script>
+    //   window.addEventListener('message', e => {
+    //     document.getElementById('test').innerHTML = e.data.text;
+    //   });
+    //   const vscode = acquireVsCodeApi();
+    //   vscode.postMessage({
+    //     text: "I'm Webview"
+    //   });
+    // </script>
+    return `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>工具箱</title>
+				<script type="module" crossorigin src="${srcJsUrl}"></script>
+    		<link rel="stylesheet" crossorigin href="${srcCssUrl}">
+      </head>
+      <body>
+				<div id="app"></div>
+      </body>
+    </html>`;
+}
+//# sourceMappingURL=extension.js.map
