@@ -6,11 +6,11 @@ let panel: vscode.WebviewPanel|null = null;
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "Toolbox" is now active!');
 
-  let disposable = vscode.commands.registerCommand('toolbox.toolbox', () => {
+  let disposable = vscode.commands.registerCommand('toolboxs.toolboxs', () => {
     // vscode.window.showInformationMessage('Hello World from toolbox!');
 
     panel = vscode.window.createWebviewPanel(
-      'toolbox',
+      'toolboxs',
       '工具箱',
       vscode.ViewColumn.One,
       {

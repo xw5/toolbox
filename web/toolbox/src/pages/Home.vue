@@ -7,6 +7,7 @@
   import time from '../assets/time.png';
   import base64 from '../assets/base64.png';
   import others from '../assets/others.png';
+  import symbols from '../assets/symbols.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -44,6 +45,11 @@
       desc: 'Base64编码和解码工具',
       img: base64,
       pathName: 'base64-encode'
+    },{
+      title: '特殊符号',
+      desc: '解决一些特殊符号输入',
+      img: symbols,
+      pathName: 'special-symbols'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
