@@ -1,11 +1,12 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { InputSearch as AInputSearch} from 'ant-design-vue';
+  import { InputSearch as AInputSearch, message} from 'ant-design-vue';
   import { useRouter } from 'vue-router';
   import url from '../assets/url.png';
   import color from '../assets/color.png';
   import time from '../assets/time.png';
   import base64 from '../assets/base64.png';
+  import others from '../assets/others.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -43,9 +44,17 @@
       desc: 'Base64编码和解码工具',
       img: base64,
       pathName: 'base64-encode'
+    },{
+      title: '持续更新',
+      desc: '其它实用工具开发中...',
+      img: others
     }
   ]);
   const gotoPage = (tool: Tool) => {
+    if (!tool.pathName) {
+      message.success(tool.desc);
+      return;
+    };
     router.push({
       name: tool.pathName
     })
@@ -59,6 +68,7 @@
       v-model:value="searchKey"
       placeholder="输入关键字搜索工具"
       enter-button
+      size="large"
       @search="onSearch"
     />
     <ul class="flex flex-row flex-wrap justify-center list-none">
