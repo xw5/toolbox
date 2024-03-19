@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { message, Tabs as ATabs, TabPane as ATabPane } from 'ant-design-vue';
-import { CopyOutlined } from '@ant-design/icons-vue';
 import Navigation from '../components/Navigation.vue';
 import TextToBase64 from '../components/TextToBase64.vue';
 import ImageToBase64 from '../components/ImageToBase64.vue';
@@ -18,6 +17,7 @@ const copy = (text) => {
     message.success('复制成功');
   }).catch(err => {
     message.error('复制失败，可手动选择复制');
+    console.log('---- copyText ----:', err);
   });
 }
 </script>

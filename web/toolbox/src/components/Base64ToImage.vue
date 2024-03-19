@@ -33,19 +33,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { 
   ref,
-  watch,
-  computed
+  watch
 } from 'vue';
-import { Input, Button as AButton, Image as AImage, List as AList, ListItem as AListItem, message } from 'ant-design-vue';
+import { Input, Image as AImage, List as AList, ListItem as AListItem, message } from 'ant-design-vue';
 import { getImgSize } from '../utils/utils.js'
 
 const { TextArea } = Input;
 
-const originData = ref('');
-const resultInfo = ref([]);
+const originData = ref<string>('');
+const resultInfo = ref<string[]>([]);
 
 watch(originData, async (val) => {
   const matchs = val.match(/data\:(image\/.+?)\;base64\,(.+?)\//);

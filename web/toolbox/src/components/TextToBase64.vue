@@ -35,11 +35,11 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { 
   ref
 } from 'vue';
-import { Input, Button as AButton, Space, message, Tabs as ATabs, TabPane as ATabPane } from 'ant-design-vue';
+import { Input, Button as AButton, Space } from 'ant-design-vue';
 import { CopyOutlined } from '@ant-design/icons-vue';
 import { encode, decode } from 'js-base64';
 

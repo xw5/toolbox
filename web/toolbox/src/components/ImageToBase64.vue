@@ -81,7 +81,7 @@ const resultInfo = ref<string[]>([]);
 
 const emit = defineEmits(['copy']);
 
-const beforeUpload = async (file) => {
+const beforeUpload = async (file: { name: string; type: string; size: any; }) => {
   console.log('---- beforeUpload ----:', file);
   if (file.name) {
     resultInfo.value.push('文件名：' + file.name);

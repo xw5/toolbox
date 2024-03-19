@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { Input as AInput, Button as AButton, message, Space, Form as AForm, FormItem, InputGroup, List as AList, ListItem as AListItem } from 'ant-design-vue';
-import { CopyOutlined, SwapOutlined, AimOutlined } from '@ant-design/icons-vue';
+import { CopyOutlined, SwapOutlined } from '@ant-design/icons-vue';
 import dayjs from 'dayjs'
 import Navigation from '../components/Navigation.vue';
 import { copyText } from '../utils/utils.js';
-
+import { Rule } from 'ant-design-vue/es/form/interface';
 
 const labelCol = { span: 3 };
 const wrapperCol = { span: 21 };
@@ -26,7 +26,7 @@ const formState = ref<{
  * @returns
  */
  const copyAction = (text: string|number, type: string) => {
-  let copyTextTemp = text;
+  let copyTextTemp:string = String(text);
   switch(type) {
     case 'color16':
       if(copyTextTemp.indexOf('#') === -1) {
@@ -40,6 +40,7 @@ const formState = ref<{
     message.success('复制成功');
   }).catch(err => {
     message.error('复制失败，可手动选择复制');
+    console.log('---- copyText ----:', err);
   });
 }
 
@@ -114,7 +115,7 @@ const rules: Record<string, Rule[]> = {
 };
 
 // 对比结果
-const diffResult = ref([]);
+const diffResult = ref<string[]>([]);
 // 时间对比
 const diffDate = () => {
   const date1 = dayjs(formState1.value.date1);

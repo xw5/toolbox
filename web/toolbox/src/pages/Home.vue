@@ -20,7 +20,7 @@
     title: string;
     desc: string;
     img: string;
-    pathName: string;
+    pathName?: string;
   }
 
   const tools = ref<Tool[]>([

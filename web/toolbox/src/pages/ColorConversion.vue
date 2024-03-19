@@ -3,10 +3,9 @@ import { ref, watch } from 'vue';
 import { Input as AInput, Button as AButton, message, Form as AForm, FormItem, InputGroup } from 'ant-design-vue';
 import PickColors from 'vue-pick-colors'
 import convert from 'color-convert';
-import { CopyOutlined, SmileOutlined } from '@ant-design/icons-vue';
+import { CopyOutlined } from '@ant-design/icons-vue';
 import Navigation from '../components/Navigation.vue';
 import { copyText } from '../utils/utils.js';
-
 
 const labelCol = { span: 3 };
 const wrapperCol = { span: 21 };
@@ -23,7 +22,7 @@ const colorPickerRef = ref('#000000');
  * 颜色转换
  * @param {string} type
  */
-const colorComputed = (type) => {
+const colorComputed = (type: string) => {
   try {
     switch(type) {
       case 'color16':
@@ -92,6 +91,7 @@ const copyAction = (text: string, type: string) => {
     message.success('复制成功');
   }).catch(err => {
     message.error('复制失败，可手动选择复制');
+    console.log('---- copyText ----:', err);
   });
 }
 

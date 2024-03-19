@@ -31,8 +31,9 @@ const reset = () => {
 const copy = () => {
   copyText(resultUrl.value).then(() => {
     message.success('复制成功');
-  }).catch(err => {
+  }).catch((err: Error) => {
     message.error('复制失败，可手动选择复制');
+    console.log('----  copyText ----:', err);
   });
 }
 </script>
