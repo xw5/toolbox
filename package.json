@@ -27,10 +27,24 @@
     "menus": {
       "editor/context": [{
         "command": "toolbox.toolbox",
-        "group": "navigation"
+        "group": "z_commands"
       }]
     }
   },
+  "icon": "icon.png",
+  "pricing": "Free",
+  "keywords": [
+    "toolbox",
+    "工具箱",
+    "开发工具箱",
+    "开发助手"
+  ],
+  "homepage": "https://gitee.com/github-9819409/toolbox",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/github-9819409/toolbox"
+  },
+  "license": "MIT",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
