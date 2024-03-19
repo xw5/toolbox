@@ -9,6 +9,21 @@ html,body,#app{
 body{
   background-color: #f9f9f9;
 }
+
+/* 浅色主题 */
+/* .body.vscode-light {
+	background: #f9f9f9;
+} */
+/* 深色主题 */
+/* body.vscode-dark {
+	background: #252526;
+	color: white;
+} */
+/* 高对比度主题 */
+/* body.vscode-high-contrast {
+	background: white;
+	color: red;
+} */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

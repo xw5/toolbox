@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
 import path from 'node:path';
-import fs from 'node:fs';
+// import fs from 'node:fs';
 
 let panel: vscode.WebviewPanel|null = null;
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "Toolbox" is now active!');
 
-  let disposable = vscode.commands.registerCommand('toolbox.helloWorld', () => {
-    vscode.window.showInformationMessage('Hello World from toolbox!');
+  let disposable = vscode.commands.registerCommand('toolbox.toolbox', () => {
+    // vscode.window.showInformationMessage('Hello World from toolbox!');
 
     panel = vscode.window.createWebviewPanel(
       'toolbox',
@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
     );
     panel.webview.html = getWebviewContent(context);
 
-		panel.webview.postMessage({text: 'I\'m VSCode extension'});
+		// panel.webview.postMessage({text: 'I\'m VSCode extension'});
   });
 
   context.subscriptions.push(disposable);
@@ -39,6 +39,17 @@ function getWebviewContent(context: vscode.ExtensionContext) {
 	);
 	let srcJsUrl = panel?.webview.asWebviewUri(jsPath).toString();
 	let srcCssUrl = panel?.webview.asWebviewUri(cssPath).toString();
+
+  // <p id="test"></p>
+  // <script>
+  //   window.addEventListener('message', e => {
+  //     document.getElementById('test').innerHTML = e.data.text;
+  //   });
+  //   const vscode = acquireVsCodeApi();
+  //   vscode.postMessage({
+  //     text: "I'm Webview"
+  //   });
+  // </script>
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -49,18 +60,7 @@ function getWebviewContent(context: vscode.ExtensionContext) {
     		<link rel="stylesheet" crossorigin href="${srcCssUrl}">
       </head>
       <body>
-        <img src="https://dummyimage.com/400x400/000/fff.jpg&text=testimg" width="300" />
 				<div id="app"></div>
-				<p id="test"></p>
-        <script>
-          window.addEventListener('message', e => {
-            document.getElementById('test').innerHTML = e.data.text;
-          });
-          const vscode = acquireVsCodeApi();
-          vscode.postMessage({
-            text: "I'm Webview"
-          });
-        </script>
       </body>
     </html>`;
 }

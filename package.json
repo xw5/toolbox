@@ -4,7 +4,7 @@
   "description": "常用工具箱",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.87.0"
+    "vscode": "^1.46.0"
   },
   "categories": [
     "Other"
@@ -14,8 +14,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "toolbox.helloWorld",
-        "title": "Hello World"
+        "command": "toolbox.toolbox",
+        "title": "toolbox"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "ctrl+shift+alt+t",
+        "command": "toolbox.toolbox"
       }
     ]
   },
