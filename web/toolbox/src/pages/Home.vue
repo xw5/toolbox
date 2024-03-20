@@ -65,7 +65,7 @@
       pathName: 'json-helper'
     },{
       title: 'diff助手',
-      desc: '文本diff对比',
+      desc: '轻量文本对比工具',
       img: diffHelper,
       pathName: 'diff-helper'
     },{
