@@ -9,6 +9,7 @@ import Base64Encode from '../pages/Base64Encode.vue';
 import SpecialSymbols from '../pages/SpecialSymbols.vue';
 import Qrcode from '../pages/Qrcode.vue';
 import JsonHelper from '../pages/JsonHelper.vue';
+import DiffHelper from '../pages/DiffHelper.vue';
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -47,6 +48,10 @@ const routes = [
     path: '/json-helper',
     name: 'json-helper',
     component: JsonHelper
+  },{ 
+    path: '/diff-helper',
+    name: 'diff-helper',
+    component: DiffHelper
   },
 ];
 

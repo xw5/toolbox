@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-[56px] flex-none">
-    <div class="flex flex-row w-full justify-between h-[56px] items-center bg-green-600 box-border fixed top-0 left-0">
+    <div class="flex flex-row w-full justify-between h-[56px] items-center bg-green-600 box-border fixed top-0 left-0 z-50">
       <div class="p-[20px] cursor-pointer" @click="goBack">
         <RollbackOutlined style="font-size: 20px;color:white;" />
       </div>

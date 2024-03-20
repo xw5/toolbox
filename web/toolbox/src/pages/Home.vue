@@ -10,6 +10,7 @@
   import symbols from '../assets/symbols.png';
   import qrcode from '../assets/qrcode.png';
   import jsonHelper from '../assets/json-helper.png';
+  import diffHelper from '../assets/diff-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -62,6 +63,11 @@
       desc: 'JSON编辑、压缩、格式化、验证等',
       img: jsonHelper,
       pathName: 'json-helper'
+    },{
+      title: 'diff助手',
+      desc: '文本diff对比',
+      img: diffHelper,
+      pathName: 'diff-helper'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',

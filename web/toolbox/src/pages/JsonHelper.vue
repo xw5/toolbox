@@ -1,25 +1,24 @@
 <template>
-  <div class="container">
+  <div class="w-full flex flex-col">
     <Navigation title="JSON助手" />
-    <JsonEditorVue class="w-full" />
+    <!-- <JsonEditorVue class="w-full" /> -->
+    <div id="jsonEditorElement" class="w-full px-[10px] box-border"></div>
   </div>
 </template>
 
-<script setup>
-import { 
-  ref
-} from 'vue';
-import JsonEditorVue from 'json-editor-vue';
+<script setup lang="ts">
+// import JsonEditorVue from 'json-editor-vue';
+import { onMounted } from 'vue';
+import { JSONEditor } from 'vanilla-jsoneditor';
 import Navigation from '../components/Navigation.vue';
-const value = ref();
+
+onMounted(() => {
+  const jsonEditorElement = document.getElementById('jsonEditorElement') as HTMLElement;
+  new JSONEditor({
+    target: jsonEditorElement
+  });
+})
 </script>
 
 <style scoped>
-.container{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 </style>

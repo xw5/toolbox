@@ -2,7 +2,7 @@
  <Navigation title="特殊符号" />
  <div class="w-full px-[20px] box-border">
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">常用特殊符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">常用特殊符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 96 个常用特殊符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -296,7 +296,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">标点符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">标点符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 117 个标点符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -653,7 +653,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">数字序号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">数字序号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 174 个数字序号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -1181,7 +1181,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">上标 &amp; 下标</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">上标 &amp; 下标</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 37 个上标 &amp; 下标，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -1298,7 +1298,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">数学符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">数学符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 95 个数学符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -1589,7 +1589,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">单位符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">单位符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 12 个单位符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -1631,7 +1631,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">箭头符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">箭头符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 131 个箭头符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -2030,7 +2030,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">制表符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">制表符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 131 个制表符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -2429,7 +2429,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">方形、圆形、三角形符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">方形、圆形、三角形符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 158 个方形、圆形、三角形符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -2909,7 +2909,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">心形、米字型、星星符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">心形、米字型、星星符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 46 个心形、米字型、星星符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -3053,7 +3053,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">货币符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">货币符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 35 个货币符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -3164,7 +3164,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">特殊英文字母</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">特殊英文字母</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 390 个特殊英文字母，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -4340,7 +4340,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">带圈中文字符</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">带圈中文字符</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 49 个带圈中文字符，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -4493,7 +4493,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">希腊字母</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">希腊字母</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 52 个希腊字母，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -4655,7 +4655,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">日文符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">日文符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 189 个日文符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
@@ -5228,7 +5228,7 @@
     </ul>
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
-    <h2 class="w-full text-center text-[16px] mb-[10px]">韩文符号</h2>
+    <h2 class="w-full text-center text-[16px] mb-[10px] text-[#333]">韩文符号</h2>
     <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 88 个韩文符号，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>

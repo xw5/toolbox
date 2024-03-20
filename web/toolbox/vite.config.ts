@@ -10,6 +10,12 @@ export default defineConfig({
     outDir: '../../out/web/toolbox/dist',
     emptyOutDir: true,
     sourcemap: true,
+    chunkSizeWarningLimit: 5000000,
+    rollupOptions: {
+      output: {
+        manualChunks(){ return null;}
+      }
+    }
   },
   css: {
     postcss: {
