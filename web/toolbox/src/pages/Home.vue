@@ -8,6 +8,7 @@
   import base64 from '../assets/base64.png';
   import others from '../assets/others.png';
   import symbols from '../assets/symbols.png';
+  import qrcode from '../assets/qrcode.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -50,6 +51,11 @@
       desc: '解决一些特殊符号输入',
       img: symbols,
       pathName: 'special-symbols'
+    },{
+      title: '二维码',
+      desc: '二维码生成与解码',
+      img: qrcode,
+      pathName: 'qrcode'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',

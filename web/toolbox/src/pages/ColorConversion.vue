@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { Input as AInput, Button as AButton, message, Form as AForm, FormItem, InputGroup } from 'ant-design-vue';
-import PickColors from 'vue-pick-colors'
+import PickColors from 'vue-pick-colors';
 import convert from 'color-convert';
 import { CopyOutlined } from '@ant-design/icons-vue';
 import Navigation from '../components/Navigation.vue';

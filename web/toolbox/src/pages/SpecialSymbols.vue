@@ -3165,9 +3165,7 @@
   </div>
   <div class="w-full p-[10px] box-border flex flex-col bg-[#f7f7f4] border-[1px] border-dashed border-gray-300">
     <h2 class="w-full text-center text-[16px] mb-[10px]">特殊英文字母</h2>
-    <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 390 个特殊英文字母，点击符号可复制到剪贴板。
-      <br>注：下面这些英文字母来自于
-      <a href="/weird-fonts">怪异英文生成器</a>。</p>
+    <p class="w-full text-center text-[14px] text-gray-500 mb-[10px]">一共有 390 个特殊英文字母，点击符号可复制到剪贴板。</p>
     <ul class="symbols-list">
       <li>
         <a href="javascript:void(0)" title="点击复制" @click="copy('𝐚')" id="𝐚">𝐚</a>
