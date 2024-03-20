@@ -2,9 +2,6 @@ import { createApp } from 'vue';
 import './style.css';
 import router from './router';
 import App from './App.vue';
-import VueDiff from 'vue-diff';
-import 'vue-diff/dist/index.css';
+import CodeDiff from 'v-code-diff';
 
-createApp(App).use(VueDiff, {
-  componentName: 'VueDiff',
-}).use(router).mount('#app');
+createApp(App).use(CodeDiff).use(router).mount('#app');

@@ -54,13 +54,18 @@ const reset = () => {
       <a-select-option value="xml">xml, html, xhtml, rss, atom, xjb, xsd, xsl, plist, svg</a-select-option>
       <a-select-option value="json">json</a-select-option>
       <a-select-option value="markdown">markdown, md, mkdown, mkd</a-select-option>
+      <a-select-option value="java">java</a-select-option>
+      <a-select-option value="python">python</a-select-option>
+      <a-select-option value="yaml">yaml</a-select-option>
+      <a-select-option value="bash">bash</a-select-option>
+      <a-select-option value="sql">sql</a-select-option>
     </a-select>
-    <vue-diff
-      mode="split"
+    <CodeDiff
+      output-format="side-by-side"
       theme="light"
       :language="language"
-      :prev="prev"
-      :current="current"
+      :oldString="prev"
+      :newString="current"
     />
   </div>
 </template>
