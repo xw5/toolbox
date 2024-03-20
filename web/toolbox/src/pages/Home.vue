@@ -9,6 +9,7 @@
   import others from '../assets/others.png';
   import symbols from '../assets/symbols.png';
   import qrcode from '../assets/qrcode.png';
+  import jsonHelper from '../assets/json-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -56,6 +57,11 @@
       desc: '二维码生成与解码',
       img: qrcode,
       pathName: 'qrcode'
+    },{
+      title: 'JSON助手',
+      desc: 'JSON编辑、压缩、格式化、验证等',
+      img: jsonHelper,
+      pathName: 'json-helper'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',

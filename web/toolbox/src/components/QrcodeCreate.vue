@@ -63,7 +63,7 @@ import {
   Button as AButton 
 } from 'ant-design-vue';
 
-const originData = ref('只要人人都献出一点爱，世界将会变成美好的人间！');
+const originData = ref('');
 const color = ref('#000000');
 const bgColor = ref('#FFFFFF');
 // 容错等级

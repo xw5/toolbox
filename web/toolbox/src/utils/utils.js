@@ -93,4 +93,21 @@ export const formatFileSize = (size) => {
     return (size / Math.pow(num, 3)).toFixed(2) + "G"; //G
   }
   return (size / Math.pow(num, 4)).toFixed(2) + "T"; //T
-}
+};
+
+/**
+ * 获取图片本地路径
+ * @param {Object} file 
+ * @returns 
+ */
+export const getObjectURL = function(file){
+  let url = null ; 
+  if (window.createObjectURL !== undefined) { // basic
+      url = window.createObjectURL(file) ;
+  } else if (window.URL !== undefined) { // mozilla(firefox)
+      url = window.URL.createObjectURL(file) ;
+  } else if (window.webkitURL!== undefined) { // webkit or chrome
+      url = window.webkitURL.createObjectURL(file) ;
+  }
+  return url;
+};

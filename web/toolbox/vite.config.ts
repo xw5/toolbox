@@ -7,7 +7,8 @@ import autoprefixer from 'autoprefixer';
 export default defineConfig({
   plugins: [vue()],
   build: {
-    outDir: '../../out/web/dist',
+    outDir: '../../out/web/toolbox/dist',
+    emptyOutDir: true,
     sourcemap: true,
   },
   css: {

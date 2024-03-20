@@ -2,7 +2,7 @@
   "name": "toolboxs",
   "displayName": "Toolboxs",
   "description": "开发助手工具箱",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "publisher": "msxw",
   "engines": {
     "vscode": "^1.46.0"
@@ -37,6 +37,7 @@
   "icon": "icon.png",
   "pricing": "Free",
   "keywords": [
+    "toolboxs",
     "toolbox",
     "工具箱",
     "开发工具箱",
@@ -70,8 +71,5 @@
     "eslint": "^8.56.0",
     "sass": "^1.72.0",
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "js-base64": "^3.7.7"
   }
 }

@@ -2,7 +2,7 @@
 import { message, Tabs as ATabs, TabPane as ATabPane } from 'ant-design-vue';
 import Navigation from '../components/Navigation.vue';
 import QrcodeCreate from '../components/QrcodeCreate.vue';
-import Base64ToImage from '../components/Base64ToImage.vue';
+import QrcodeDecode from '../components/QrcodeDecode.vue';
 import { copyText } from '../utils/utils.js';
 
 import { ref } from 'vue'
@@ -29,7 +29,7 @@ const copy = (text) => {
         <qrcode-create />
       </a-tab-pane>
       <a-tab-pane key="decode" tab="二维码解码">
-        <Base64ToImage @copy="copy" />
+        <QrcodeDecode @copy="copy" />
       </a-tab-pane>
     </a-tabs>
   </div>
