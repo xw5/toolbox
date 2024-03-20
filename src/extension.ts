@@ -30,8 +30,8 @@ export function deactivate() { }
 
 function getWebviewContent(context: vscode.ExtensionContext) {
 	// const isProduction = context.extensionMode === vscode.ExtensionMode.Production;
-  const jsurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-Dwt_s3sR.js');
-  const cssurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-C3QGM802.css');
+  const jsurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-1y25-wPd.js');
+  const cssurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-GFUM5_94.css');
 	const jsPath = vscode.Uri.file(jsurl);
 	const cssPath = vscode.Uri.file(cssurl);
 
