@@ -9,6 +9,7 @@ import { downloadFileByBase64 } from '../utils/utils';
 const fileList = ref<File[]>([]);
 const convertImgs = ref<{img: string, isOK: boolean, uid: string, name: string}[]>([]);
 const miniType = ref('webp');
+const isFinish = ref(false);
 
 const beforeUpload = (file) => {
   console.log('---- beforeUpload ----:', file);
@@ -20,7 +21,7 @@ const beforeUpload = (file) => {
 const downloadItem = (item: File) => {
   const download = convertImgs.value.find(img => img.uid === item.uid);
   if (download) {
-    downloadFileByBase64(download.img, download.name.split('.')[0] + Date.now());
+    downloadFileByBase64(download.img, download.name + Date.now());
   }
 }
 
@@ -28,21 +29,32 @@ const downloadItem = (item: File) => {
 const convert = () => {
   const loading = message.loading('正在转换中...');
   fileList.value.forEach(async (file) => {
-    const res = await RckImage(file).dataURL({ type: miniType.value, quality: 1 });
-    // @ts-ignore
-    convertImgs.value.push({
-      uid: file.uid,
-      img: res,
-      isOK: true,
-      name: file.name
-    });
+    try {
+      const index = convertImgs.value.findIndex(img => img.uid === file.uid);
+      // 只有没转换完的才走转换逻辑
+      if (index === -1) {
+        const res = await RckImage(file).dataURL({ type: miniType.value, quality: 1 });
+        if (res) {
+          convertImgs.value.push({
+            // @ts-ignore
+            uid: file.uid,
+            img: res,
+            isOK: true,
+            name: file.name.split('.')[0]
+          });
+        }
+      }
+    } catch(err) {}
   })
   loading();
+  isFinish.value = true;
   console.log('---- convert ----:', convertImgs.value);
 }
 
 const reset = () => {
   fileList.value = [];
+  isFinish.value = false;
+  convertImgs.value = [];
 }
 
 /**
