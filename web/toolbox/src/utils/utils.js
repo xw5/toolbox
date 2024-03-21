@@ -111,3 +111,38 @@ export const getObjectURL = function(file){
   }
   return url;
 };
+
+//将base64转换为blob
+const dataURLtoBlob = (dataurl) => {
+  var arr = dataurl.split(","),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], { type: mime });
+};
+
+//下载方法
+const downloadFile = (url, name) => {
+  var a = document.createElement("a");
+  a.setAttribute("href", url);
+  a.setAttribute("download", name);
+  a.setAttribute("target", "_blank");
+  let clickEvent = document.createEvent("MouseEvents");
+  clickEvent.initEvent("click", true, true);
+  a.dispatchEvent(clickEvent);
+};
+
+/**
+ * 下载base64文件到本地
+ * @param {string} base64 
+ * @param {string} name 
+ */
+export const downloadFileByBase64 = (base64, name) => {
+  var myBlob = dataURLtoBlob(base64);
+  var myUrl = URL.createObjectURL(myBlob);
+  downloadFile(myUrl, name);
+};

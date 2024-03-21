@@ -11,6 +11,7 @@
   import qrcode from '../assets/qrcode.png';
   import jsonHelper from '../assets/json-helper.png';
   import diffHelper from '../assets/diff-helper.png';
+  import imgHelper from '../assets/img-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -68,6 +69,11 @@
       desc: '轻量文本对比工具',
       img: diffHelper,
       pathName: 'diff-helper'
+    },{
+      title: '图片格式助手',
+      desc: 'webp,png,jpg,bmp格式互转',
+      img: imgHelper,
+      pathName: 'img-helper'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
