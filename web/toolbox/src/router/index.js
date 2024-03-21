@@ -11,6 +11,7 @@ import Qrcode from '../pages/Qrcode.vue';
 import JsonHelper from '../pages/JsonHelper.vue';
 import DiffHelper from '../pages/DiffHelper.vue';
 import ImgpHelper from '../pages/ImgHelper.vue';
+import RegexHelper from '../pages/RegexHelper.vue';
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -57,6 +58,10 @@ const routes = [
     path: '/diff-helper',
     name: 'diff-helper',
     component: DiffHelper
+  },{ 
+    path: '/regex-helper',
+    name: 'regex-helper',
+    component: RegexHelper
   },
 ];
 

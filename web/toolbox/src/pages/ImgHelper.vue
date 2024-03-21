@@ -19,6 +19,7 @@ const beforeUpload = (file) => {
 
 // 下载
 const downloadItem = (item: File) => {
+  // @ts-ignore
   const download = convertImgs.value.find(img => img.uid === item.uid);
   if (download) {
     downloadFileByBase64(download.img, download.name + Date.now());
@@ -30,6 +31,7 @@ const convert = () => {
   const loading = message.loading('正在转换中...');
   fileList.value.forEach(async (file) => {
     try {
+      // @ts-ignore
       const index = convertImgs.value.findIndex(img => img.uid === file.uid);
       // 只有没转换完的才走转换逻辑
       if (index === -1) {

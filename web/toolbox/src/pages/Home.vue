@@ -12,6 +12,7 @@
   import jsonHelper from '../assets/json-helper.png';
   import diffHelper from '../assets/diff-helper.png';
   import imgHelper from '../assets/img-helper.png';
+  import regexHelper from '../assets/regex-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -74,6 +75,11 @@
       desc: 'webp,png,jpg,bmp格式互转',
       img: imgHelper,
       pathName: 'img-helper'
+    },{
+      title: '正则助手',
+      desc: '正则可视化展示、测试工具',
+      img: regexHelper,
+      pathName: 'regex-helper'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
