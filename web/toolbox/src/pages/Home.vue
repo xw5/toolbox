@@ -13,6 +13,8 @@
   import diffHelper from '../assets/diff-helper.png';
   import imgHelper from '../assets/img-helper.png';
   import regexHelper from '../assets/regex-helper.png';
+  import vuePlayground from '../assets/vue-playground.png';
+  import reactPlayground from '../assets/react-playground.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -81,6 +83,16 @@
       img: regexHelper,
       pathName: 'regex-helper'
     },{
+      title: 'Vue Playground',
+      desc: 'Vue的在线演练场',
+      img: vuePlayground,
+      pathName: 'https://play.vuejs.org'
+    },{
+      title: 'React Playground',
+      desc: 'React的在线演练场',
+      img: reactPlayground,
+      pathName: 'https://fewismuch.github.io/react-playground'
+    },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
       img: others
@@ -97,11 +109,25 @@
     })
   });
 
+  /**
+   * 路由跳转
+   * @param { Object } tool 
+   */
   const gotoPage = (tool: Tool) => {
     if (!tool.pathName) {
       message.success(tool.desc);
       return;
     };
+    if (tool.pathName.startsWith('http')) {
+      router.push({
+        name: 'webview',
+        query: {
+          url: tool.pathName,
+          title: tool.title
+        }
+      })
+      return;
+    }
     router.push({
       name: tool.pathName
     })

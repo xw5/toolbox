@@ -12,6 +12,7 @@ import JsonHelper from '../pages/JsonHelper.vue';
 import DiffHelper from '../pages/DiffHelper.vue';
 import ImgpHelper from '../pages/ImgHelper.vue';
 import RegexHelper from '../pages/RegexHelper.vue';
+import Webview from '../pages/Webview.vue';
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -62,6 +63,11 @@ const routes = [
     path: '/regex-helper',
     name: 'regex-helper',
     component: RegexHelper
+  },
+  { 
+    path: '/webview',
+    name: 'webview',
+    component: Webview
   },
 ];
 

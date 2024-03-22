@@ -1,5 +1,13 @@
 # Change Log
 更新日志记录
+## [0.0.6] - 2024-03-22
+### Added
+- Vue Playground： Vue的在线演练场
+- React Playground： React的在线演练场
+
+### Changed
+- 优化了部分代码
+
 ## [0.0.5] - 2024-03-22
 ### Added
 - 图片格式助手： webp,png,jpg,bmp格式互转
