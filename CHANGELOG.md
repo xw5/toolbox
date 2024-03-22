@@ -1,5 +1,9 @@
 # Change Log
 更新日志记录
+## [0.0.7] - 2024-03-22
+### Changed
+- 优化了diff工具
+
 ## [0.0.6] - 2024-03-22
 ### Added
 - Vue Playground： Vue的在线演练场
