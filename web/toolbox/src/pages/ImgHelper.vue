@@ -102,7 +102,7 @@ const batchUpload = () => {
         </a-form-item>
         <a-button type="primary" @click="convert">转换</a-button>
       </div>
-      <a-list size="large" bordered :data-source="fileList">
+      <a-list size="large" bordered :data-source="fileList" class="bg-[#f9f9f9]">
         <template #renderItem="{ item }">
           <a-list-item class="w-full flex flex-row justify-between">
             <span>{{ item.name }}</span>
