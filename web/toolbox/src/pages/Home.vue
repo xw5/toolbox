@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue';
-  import { Input as AInput, message} from 'ant-design-vue';
+  import { Input as AInput, message, Button as AButton, Modal as AModal, List as AList, ListItem as AListItem } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
+  import { ArrowRightOutlined } from '@ant-design/icons-vue';
   import url from '../assets/url.png';
   import color from '../assets/color.png';
   import time from '../assets/time.png';
@@ -15,6 +16,9 @@
   import regexHelper from '../assets/regex-helper.png';
   import vuePlayground from '../assets/vue-playground.png';
   import reactPlayground from '../assets/react-playground.png';
+  import codeimage from '../assets/codeimage.png';
+  import compressImage from '../assets/compress-image.png';
+  import icoConvert from '../assets/ico-convert.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -24,10 +28,17 @@
     
   // }
 
+  type toolUrls = {
+    url: string;
+    title: string;
+    isOut: boolean;
+  }
+
   type Tool = {
     title: string;
     desc: string;
     img: string;
+    urls?: toolUrls[];
     pathName?: string;
   }
 
@@ -83,6 +94,14 @@
       img: regexHelper,
       pathName: 'regex-helper'
     },{
+      title: '持续更新',
+      desc: '其它实用工具开发中...',
+      img: others
+    }
+  ]);
+
+  const toolsOnline = ref<Tool[]>([
+    {
       title: 'Vue Playground',
       desc: 'Vue的在线演练场',
       img: vuePlayground,
@@ -92,6 +111,54 @@
       desc: 'React的在线演练场',
       img: reactPlayground,
       pathName: 'https://fewismuch.github.io/react-playground'
+    },{
+      title: '图片转ico',
+      desc: '图片转ico格式工具',
+      img: icoConvert,
+      pathName: 'https://ico.nyaasu.top/'
+    },{
+      title: '图片压缩',
+      desc: '好用的JPG/PNG/GIF/SVG图片压缩工具',
+      img: compressImage,
+      urls: [
+      {
+          title: 'tinypng图片压缩（Webp/JPG/PNG, PNG压缩首选,一次最多20张，单张大小不能超5M）',
+          url: 'https://tinypng.com/',
+          isOut: true
+        },{
+          title: 'iloveimg图片压缩（JPG/PNG/GIF/SVG）',
+          url: 'https://www.iloveimg.com/zh-cn/compress-image',
+          isOut: true
+        }
+      ]
+    },{
+      title: '在线编辑器',
+      desc: '在线运行前端代码，分享代码，实时预览效果',
+      img: compressImage,
+      urls: [
+      {
+          title: 'JsBin（不错，我最用，分享代码无需登录）',
+          url: 'https://jsbin.com/?html,css,output',
+          isOut: true
+        },{
+          title: 'PlayCode（颜值高，分享需要登录）',
+          url: 'https://playcode.io/javascript',
+          isOut: true
+        },{
+          title: 'Techbrood',
+          url: 'https://wow.techbrood.com/fiddle/new',
+          isOut: false
+        },{
+          title: 'CodePen(访问较慢，有可能需要科学上网)',
+          url: 'https://codepen.io/pen',
+          isOut: true
+        }
+      ]
+    },{
+      title: '代码段截图',
+      desc: '漂亮代码段截图生成器',
+      img: codeimage,
+      pathName: 'https://www.codepng.app/'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
@@ -109,29 +176,90 @@
     })
   });
 
+  // 通过计算属性实现搜索功能
+  const toolsOnlineFilter = computed(() => {
+    if (!searchKey.value) {
+      return toolsOnline.value;
+    }
+    return toolsOnline.value.filter((item) => {
+      return item.title.toLowerCase().includes(searchKey.value.toLowerCase());
+    })
+  });
+
+  // 展示工具推荐
+  const showPicker = (tool: Tool) => {
+    console.log('---- showPicker ----:', tool);
+    urls.value = tool.urls;
+    openUrlsPicker.value = true;
+  }
+
+  /**
+   * 取消url选择
+   */
+  const urlsPickerCancel = () => {
+    openUrlsPicker.value = false;
+  }
+
+  /**
+   * webview打开
+   * @param {Object} tool 
+   */
+  const openWebview = (tool) => {
+    router.push({
+      name: 'webview',
+      query: {
+        url: tool.pathName || tool.url,
+        title: tool.title
+      }
+    })
+  }
+
   /**
    * 路由跳转
    * @param { Object } tool 
    */
   const gotoPage = (tool: Tool) => {
-    if (!tool.pathName) {
+    if (!tool.pathName && !tool.urls) {
       message.success(tool.desc);
       return;
     };
-    if (tool.pathName.startsWith('http')) {
-      router.push({
-        name: 'webview',
-        query: {
-          url: tool.pathName,
-          title: tool.title
+    if (tool.pathName && tool.pathName.startsWith('http')) {
+      // router.push({
+      //   name: 'webview',
+      //   query: {
+      //     url: tool.pathName,
+      //     title: tool.title
+      //   }
+      // })
+      openWebview(tool);
+      return;
+    }
+    if (tool.urls) {
+      if (tool.urls.length === 1) {
+        if (!tool.urls[0].isOut) {
+          // router.push({
+          //   name: 'webview',
+          //   query: {
+          //     url: tool.urls[0].url,
+          //     title: tool.title
+          //   }
+          // })
+          openWebview(tool);
+          return;
         }
-      })
+        window.open(tool.urls[0].url);
+      } else {
+        showPicker(tool);
+      }
       return;
     }
     router.push({
       name: tool.pathName
     })
   };
+
+  const openUrlsPicker = ref(false);
+  const urls = ref<toolUrls[]>()
 </script>
 
 <template>
@@ -143,6 +271,7 @@
       enter-button
       size="large"
     />
+    <h3 class="text-[#333] text-[16px] mb-[10px]" v-if="toolsFilter.length > 0">本地工具</h3>
     <ul class="flex flex-row flex-wrap justify-center list-none">
       <li class="w-[268px] h-[80px] px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)] cursor-pointer" v-for="(tool, index) in toolsFilter" :key="index" @click="gotoPage(tool)">
         <img :src="tool.img" class="w-[64px] h-[64px] mr-[5px]" alt="">
@@ -152,6 +281,37 @@
         </div>
       </li>
     </ul>
+    <h3 class="text-[#333] text-[16px] my-[10px]" v-if="toolsOnlineFilter.length > 0">在线工具推荐</h3>
+    <ul class="flex flex-row flex-wrap justify-center list-none">
+      <li class="w-[268px] h-[80px] px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)] cursor-pointer" v-for="(tool, index) in toolsOnlineFilter" :key="index" @click="gotoPage(tool)">
+        <img :src="tool.img" class="w-[64px] h-[64px] mr-[5px]" alt="">
+        <div class="flex flex-col h-full justify-around">
+          <h3 class="text-black text-[14px]">{{ tool.title }}</h3>
+          <p class="text-[#6c757d] text-[12px]">{{ tool.desc }}</p>
+        </div>
+      </li>
+    </ul>
+    <a-modal 
+      centered 
+      v-model:open="openUrlsPicker" 
+      width="800px" 
+      :wrap-style="{ overflow: 'hidden'}"
+    >
+      <a-list size="small" bordered :data-source="urls" class="mx-[15px]">
+        <template #renderItem="{ item }">
+          <a-list-item class="group">
+            <a :href="item.isOut ? item.url : 'javascript:void(0);'" @click="item.isOut ? null : openWebview(item)" title="点击使用体验" class="flex flex-col w-full" :target="item.isOut ? '_blank' : '_self'">
+              <p class="text-[#6c757d] text-[14px] group-hover:text-[#1afa29]">{{ item.title }}</p>
+              <p class="text-[#6c757d] text-[14px] group-hover:text-[#1afa29]">{{ item.url }}</p>
+            </a>
+            <ArrowRightOutlined class="text-[16px] text-gray-500 group-hover:text-[#1afa29]" />
+          </a-list-item>
+        </template>
+      </a-list>
+      <template #footer>
+        <a-button @click="urlsPickerCancel">知道了</a-button>
+      </template>
+    </a-modal>
   </div>
 </template>
 
