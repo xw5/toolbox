@@ -11,6 +11,7 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     chunkSizeWarningLimit: 5000000,
+    assetsInlineLimit: 20 * 1024,
     rollupOptions: {
       output: {
         manualChunks(){ return null;}
