@@ -25,6 +25,7 @@
 **在线工具推荐**
 * Vue Playground： Vue的在线演练场
 * React Playground： React的在线演练场
+* iconfont： 矢量图标库，提供矢量图标下载、在线存储、格式转换等功能
 * 图片转ico： 图片转ico格式工具
 * 图片压缩： 好用的JPG/PNG/GIF/SVG图片压缩工具
 * 在线编辑器： 在线运行前端代码，分享代码，实时预览效果

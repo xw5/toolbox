@@ -27,6 +27,7 @@
   import caniuse from '../assets/caniuse.png';
   import dataStatistics from '../assets/data-statistics.png';
   import svgHelper from '../assets/svg-helper.png';
+  import iconfont from '../assets/iconfont.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -119,6 +120,12 @@
       desc: 'React的在线演练场',
       img: reactPlayground,
       pathName: 'https://fewismuch.github.io/react-playground'
+    },{
+      title: 'iconfont',
+      desc: '矢量图标库，提供矢量图标下载、在线存储、格式转换等功能',
+      img: iconfont,
+      pathName: 'https://www.iconfont.cn/',
+      isOut: true
     },{
       title: '图片转ico',
       desc: '图片转ico格式工具',
