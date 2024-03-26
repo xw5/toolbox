@@ -20,7 +20,34 @@ export function activate(context: vscode.ExtensionContext) {
     );
     panel.webview.html = getWebviewContent(context);
 
-		// panel.webview.postMessage({text: 'I\'m VSCode extension'});
+    // vs code接收来自webview的消息，根据command作不同操作
+    panel.webview.onDidReceiveMessage(
+      message => {
+        switch (message.command) {
+          // 更改插件配置
+          case 'updateConfig':
+            vscode.workspace.getConfiguration().update(`toolboxs.${message.key}`, message.value);
+            return;
+          // 获取插件配置
+          case 'getConfig':
+            const value = vscode.workspace.getConfiguration().get(`toolboxs.${message.key}`);
+            panel.webview.postMessage({
+              command: 'sendConfig',
+              key: message.key,
+              value
+            });
+        }
+      },
+      undefined,
+      context.subscriptions
+    );
+
+    const isOutOpen = vscode.workspace.getConfiguration().get('toolboxs.isOutOpen');
+		panel.webview.postMessage({
+      command: 'sendConfig',
+      key: 'isOutOpen',
+      value: isOutOpen,
+    });
   });
 
   context.subscriptions.push(disposable);
@@ -30,8 +57,8 @@ export function deactivate() { }
 
 function getWebviewContent(context: vscode.ExtensionContext) {
 	// const isProduction = context.extensionMode === vscode.ExtensionMode.Production;
-  const jsurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-Bq49Y6ZK.js');
-  const cssurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-w2st9mne.css');
+  const jsurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-BaBI6LVH.js');
+  const cssurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-DZZHOywI.css');
 	const jsPath = vscode.Uri.file(jsurl);
 	const cssPath = vscode.Uri.file(cssurl);
 

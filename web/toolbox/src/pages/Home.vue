@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import { Input as AInput, message, Button as AButton, Popover as APopover, Image as AImage, Modal as AModal, List as AList, ListItem as AListItem } from 'ant-design-vue';
+  import { ref, computed, watch } from 'vue';
+  import { Input as AInput, message, Button as AButton, Popover as APopover, Image as AImage, Modal as AModal, List as AList, ListItem as AListItem, Switch as ASwitch } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
-  import { ArrowRightOutlined } from '@ant-design/icons-vue';
+  import { ArrowRightOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
+  import { getVsCode } from '../utils/vscode.js';
   import url from '../assets/url.png';
   import color from '../assets/color.png';
   import time from '../assets/time.png';
@@ -18,14 +19,18 @@
   import reactPlayground from '../assets/react-playground.png';
   import codeimage from '../assets/codeimage.png';
   import compressImage from '../assets/compress-image.png';
+  import onlineIde from '../assets/online-ide.png';
   import icoConvert from '../assets/ico-convert.png';
   import mywx from '../assets/mywxok.jpg';
   import wxzs from '../assets/wxzs.jpg';
+  import codeSnippet from '../assets/code-snippet.png';
+  import caniuse from '../assets/caniuse.png';
+  import dataStatistics from '../assets/data-statistics.png';
+  import svgHelper from '../assets/svg-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
-  const searchKey = ref<string>('');
-
+  const searchKey = ref<string>(''); 
   // const onSearch = () => {
     
   // }
@@ -42,6 +47,7 @@
     img: string;
     urls?: toolUrls[];
     pathName?: string;
+    isOut?: boolean;
   }
 
   const tools = ref<Tool[]>([
@@ -136,7 +142,7 @@
     },{
       title: '在线编辑器',
       desc: '在线运行前端代码，分享代码，实时预览效果',
-      img: compressImage,
+      img: onlineIde,
       urls: [
       {
           title: 'JsBin（不错，我最用，分享代码无需登录）',
@@ -162,11 +168,43 @@
       img: codeimage,
       pathName: 'https://www.codepng.app/'
     },{
+      title: '代码片段生成器',
+      desc: '代码片段生成工具，辅助生成代码段',
+      img: codeSnippet,
+      pathName: 'https://snippet-generator.app/'
+    },{
+      title: 'Can I use',
+      desc: '一款前端兼容性自查工具，查css、js等前端技术在各浏览器下的兼容情况',
+      img: caniuse,
+      pathName: 'https://caniuse.com/'
+    },{
+      title: 'statcounter',
+      desc: '数据统计分析工具,查浏览器、屏幕分辨率等市场占比',
+      img: dataStatistics,
+      pathName: 'https://gs.statcounter.com/'
+    },{
+      title: 'SVG压缩合并工具',
+      desc: 'SVG压缩、合并、转base64、生成css行间svg',
+      img: svgHelper,
+      pathName: 'https://www.zhangxinxu.com/sp/svgo/'
+    },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
       img: others
     }
   ]);
+
+  const isOut = ref(false); // 在线工具是否全部外部浏览器打开
+  watch(isOut, (newVal, oldVal) => {
+    console.log('---- watch ----:count', newVal, oldVal);
+    if (getVsCode()) {
+      getVsCode().postMessage({
+        command: 'updateConfig',
+        key: 'isOutOpen',
+        value: newVal
+      });
+    }
+  })
 
   // 通过计算属性实现搜索功能
   const toolsFilter = computed(() => {
@@ -226,26 +264,17 @@
       return;
     };
     if (tool.pathName && tool.pathName.startsWith('http')) {
-      // router.push({
-      //   name: 'webview',
-      //   query: {
-      //     url: tool.pathName,
-      //     title: tool.title
-      //   }
-      // })
+      // 要求全部外部打开，或者它本身就要求外部打开的就全部外部唤起浏览器打开
+      if (isOut.value || tool.isOut) {
+        window.open(tool.pathName);
+        return;
+      }
       openWebview(tool);
       return;
     }
     if (tool.urls) {
       if (tool.urls.length === 1) {
-        if (!tool.urls[0].isOut) {
-          // router.push({
-          //   name: 'webview',
-          //   query: {
-          //     url: tool.urls[0].url,
-          //     title: tool.title
-          //   }
-          // })
+        if (!tool.urls[0].isOut && !isOut.value) {
           openWebview(tool);
           return;
         }
@@ -261,7 +290,27 @@
   };
 
   const openUrlsPicker = ref(false);
-  const urls = ref<toolUrls[]>()
+  const urls = ref<toolUrls[]>();
+
+  if (getVsCode()) {
+    window.addEventListener('message', event => {
+      const message = event.data; // The JSON data our extension sent
+      console.log('---- webview message ----:', message);
+      switch (message.command) {
+        case 'sendConfig':
+          if (message.key === 'isOutOpen') {
+            isOut.value = message.value;
+          }
+          break;
+        default:
+          break;
+        }
+    });
+    // getVsCode().postMessage({
+    //   command: 'getConfig',
+    //   key: 'isOutOpen'
+    // });
+  }
 </script>
 
 <template>
@@ -283,7 +332,19 @@
         </div>
       </li>
     </ul>
-    <h3 class="text-[#333] text-[16px] my-[10px]" v-if="toolsOnlineFilter.length > 0">在线工具推荐</h3>
+    <div class="my-[10px] flex flex-row justify-center items-center">
+      <h3 class="text-[#333] text-[16px] mr-[10px]" v-if="toolsOnlineFilter.length > 0">在线工具推荐</h3>
+      <a-popover placement="top">
+        <template #content>
+          <p class="text-[#6c757d] text-[14px]">在线工具我本是希望全部在vs code里打开的，但部分工具被禁止内嵌，不得不唤起外部浏览器打开</p>
+          <p class="text-[#6c757d] text-[14px]">如若你更喜欢统一外部打开方式，可以开启这个选项<a-switch class="ml-[5px]" v-model:checked="isOut" checked-children="开" un-checked-children="关" /></p>
+        </template>
+        <template #title>
+          <span>温馨提示</span>
+        </template>
+        <QuestionCircleOutlined class="text-[#666] hover:text-[#1afa29]" />
+      </a-popover>
+    </div>
     <ul class="flex flex-row flex-wrap justify-center list-none">
       <li class="w-[268px] h-[80px] px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)] cursor-pointer" v-for="(tool, index) in toolsOnlineFilter" :key="index" @click="gotoPage(tool)">
         <img :src="tool.img" class="w-[64px] h-[64px] mr-[5px]" alt="">
@@ -293,7 +354,7 @@
         </div>
       </li>
     </ul>
-    <div class="absolute bottom-[10px] text-[#6c757d] text-[12px] text-center flex flex-col items-center max-[825px]:relative max-[825px]:bottom-0 max-[825px]:mt-[10px]">
+    <div class="absolute bottom-[10px] text-[#6c757d] text-[12px] text-center flex flex-col items-center max-[825px]:relative max-[835px]:bottom-0 max-[835px]:mt-[10px]">
       <p class="mb-[8px]">工欲善其事，必先利其器</p>
       <p class="flex flex-row">
         <a-popover>
