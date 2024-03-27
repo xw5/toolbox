@@ -1,10 +1,12 @@
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue';
+  import { ref, computed, watch, onMounted } from 'vue';
   import { Input as AInput, message, Button as AButton, Popover as APopover, Image as AImage, Modal as AModal, List as AList, ListItem as AListItem, Switch as ASwitch } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
   import { ArrowRightOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
   import EnterItems from '../components/EnterItems.vue';
   import { getVsCode } from '../utils/vscode.js';
+  import { timestampToTime } from '../utils/utils.js';
+
   import url from '../assets/url.png';
   import color from '../assets/color.png';
   import time from '../assets/time.png';
@@ -361,10 +363,17 @@
     //   key: 'isOutOpen'
     // });
   }
+
+  const nowTime = ref<string>('0000-00-00 00:00:00');
+  onMounted(() => {
+    setInterval(() => {
+      nowTime.value = timestampToTime(Date.now(), 'YYYY-MM-DD hh:mm:ss');
+    }, 1000);
+  })
 </script>
 
 <template>
-  <div class="w-full h-full flex flex-col items-center justify-center max-[1380px]:justify-start">
+  <div class="w-full h-full flex flex-col items-center justify-start">
     <a-input
       class="max-w-[680px] w-full my-[16px]"
       v-model:value="searchKey"
@@ -393,7 +402,8 @@
     <EnterItems :tools="toolsOnlineFilter" @link="gotoPage" :out-in-tag="true" />
 
     <!-- footer 脚注 -->
-    <div class="absolute bottom-[10px] text-[#6c757d] text-[12px] text-center flex flex-col items-center max-[1100px]:relative max-[1100px]:bottom-0 max-[1100px]:mt-[10px]">
+    <div class="text-[#6c757d] text-[12px] text-center flex flex-col items-center mt-[10px] footer">
+      <p class="mb-[8px] text-[16px]">{{ nowTime }}</p>
       <p class="mb-[8px]">工欲善其事，必先利其器</p>
       <p class="flex flex-row">
         <a-popover>
@@ -459,5 +469,24 @@
 </template>
 
 <style scoped>
+  .footer {
+    position: fixed;
+    bottom: 0;
+  }
+  
+  
+  /* Extra small devices (phones, 600px width and down, 600px height and down) */
+  @media only screen and (max-width: 1130px) {
+    .footer {
+      position: relative;
+      bottom: 0;
+    }
+  }
+  @media only screen and (max-height: 886px) {
+    .footer {
+      position: relative;
+      bottom: 0;
+    }
+  }
 
 </style>
