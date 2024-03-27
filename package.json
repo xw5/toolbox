@@ -1,7 +1,7 @@
 {
   "name": "toolboxs",
   "displayName": "Toolboxs",
-  "description": "开发助手工具箱",
+  "description": "开发辅助工具箱,你的编程好帮手",
   "version": "0.0.10",
   "publisher": "msxw",
   "engines": {

@@ -3,6 +3,7 @@
   import { Input as AInput, message, Button as AButton, Popover as APopover, Image as AImage, Modal as AModal, List as AList, ListItem as AListItem, Switch as ASwitch } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
   import { ArrowRightOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
+  import EnterItems from '../components/EnterItems.vue';
   import { getVsCode } from '../utils/vscode.js';
   import url from '../assets/url.png';
   import color from '../assets/color.png';
@@ -28,6 +29,12 @@
   import dataStatistics from '../assets/data-statistics.png';
   import svgHelper from '../assets/svg-helper.png';
   import iconfont from '../assets/iconfont.png';
+  import drawIo from '../assets/draw-io.png';
+  import thinking from '../assets/thinking.png';
+  import excalidraw from '../assets/excalidraw.png';
+  import svgeditor from '../assets/svgeditor.png';
+  import codeFormat from '../assets/code-format.png';
+  import formatJxyHelper from '../assets/format-jxy-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -103,6 +110,11 @@
       img: regexHelper,
       pathName: 'regex-helper'
     },{
+      title: 'JSON-XML-YAML格式互转',
+      desc: 'JSON、XML、YAML格式互相转换工具',
+      img: formatJxyHelper,
+      pathName: 'format-jxy-helper'
+    },{
       title: '持续更新',
       desc: '其它实用工具开发中...',
       img: others
@@ -120,6 +132,11 @@
       desc: 'React的在线演练场',
       img: reactPlayground,
       pathName: 'https://fewismuch.github.io/react-playground'
+    },{
+      title: '代码格式化',
+      desc: 'JSON/XML/YAML/HTML/CSS/JS/SQL/PHP代码格式化',
+      img: codeFormat,
+      pathName: 'http://www.codeformat.cn/xml.html'
     },{
       title: 'iconfont',
       desc: '矢量图标库，提供矢量图标下载、在线存储、格式转换等功能',
@@ -195,8 +212,34 @@
       img: svgHelper,
       pathName: 'https://www.zhangxinxu.com/sp/svgo/'
     },{
+      title: 'JSON格式化',
+      desc: 'JSON格式化，JSON转XML,CSV,YAML工具',
+      img: jsonHelper,
+      pathName: 'https://www.jyshare.com/front-end/53/'
+    },{
+      title: 'draw.io在线绘图',
+      desc: '支持流程图、UML类图、组织结构图、泳道图、E-R图、文氏图等的绘制',
+      img: drawIo,
+      pathName: 'https://app.diagrams.net/?src=about',
+      isOut: true
+    },{
+      title: '思维导图',
+      desc: '在线思维导图绘制工具',
+      img: thinking,
+      pathName: 'https://www.jyshare.com/more/kitymind/index.html'
+    },{
+      title: 'Excelidraw白板',
+      desc: '手绘风格电子白板在线应用，能快速画出美观漂亮的流程图、示意图和开发架构图等',
+      img: excalidraw,
+      pathName: 'https://excalidraw.com/'
+    },{
+      title: 'SVG编辑器',
+      desc: 'SVG在线编辑器',
+      img: svgeditor,
+      pathName: 'https://www.jyshare.com/more/svgeditor/'
+    },{
       title: '持续更新',
-      desc: '其它实用工具开发中...',
+      desc: '其它实用工具努力接入中...',
       img: others
     }
   ]);
@@ -321,7 +364,7 @@
 </script>
 
 <template>
-  <div class="w-full h-full flex flex-col items-center justify-center max-[1108px]:justify-start">
+  <div class="w-full h-full flex flex-col items-center justify-center max-[1380px]:justify-start">
     <a-input
       class="max-w-[680px] w-full my-[16px]"
       v-model:value="searchKey"
@@ -329,16 +372,11 @@
       enter-button
       size="large"
     />
+    <!-- 本地工具 -->
     <h3 class="text-[#333] text-[16px] mb-[10px]" v-if="toolsFilter.length > 0">本地工具</h3>
-    <ul class="flex flex-row flex-wrap justify-center list-none">
-      <li class="w-[268px] h-[80px] px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)] cursor-pointer" v-for="(tool, index) in toolsFilter" :key="index" @click="gotoPage(tool)">
-        <img :src="tool.img" class="w-[64px] h-[64px] mr-[5px]" alt="">
-        <div class="flex flex-col h-full justify-around">
-          <h3 class="text-black text-[14px]">{{ tool.title }}</h3>
-          <p class="text-[#6c757d] text-[12px]">{{ tool.desc }}</p>
-        </div>
-      </li>
-    </ul>
+    <EnterItems :tools="toolsFilter" @link="gotoPage" />
+
+    <!-- 在线工具 -->
     <div class="my-[10px] flex flex-row justify-center items-center">
       <h3 class="text-[#333] text-[16px] mr-[10px]" v-if="toolsOnlineFilter.length > 0">在线工具推荐</h3>
       <a-popover placement="top">
@@ -352,20 +390,10 @@
         <QuestionCircleOutlined class="text-[#666] hover:text-[#1afa29]" />
       </a-popover>
     </div>
-    <ul class="flex flex-row flex-wrap justify-center list-none">
-      <li class="w-[268px] h-[80px] relative px-[10px] py-[5px] box-border flex flex-row items-center flex-none mr-[5px] mb-[5px] bg-white shadow-[0px_0px_20px_-5px_rgba(158,158,158,.2)] cursor-pointer" v-for="(tool, index) in toolsOnlineFilter" :key="index" @click="gotoPage(tool)">
-        <img :src="tool.img" class="w-[64px] h-[64px] mr-[5px]" alt="">
-        <div class="flex flex-col h-full justify-around">
-          <h3 class="text-black text-[14px]">{{ tool.title }}</h3>
-          <p class="text-[#6c757d] text-[12px]">{{ tool.desc }}</p>
-        </div>
-        <div class="w-[16px] h-[16px] text-[#999] absolute top-[3px] right-[3px]" v-if="!tool.urls">
-          <svg t="1711436135992" class="w-full h-full" v-if="tool.isOut" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1060" width="32" height="32"><path d="M812.7 217.7C734.9 139.8 629.3 96.1 519.3 96.1s-215.6 43.7-293.4 121.6c-162 162-162 424.9 0 587 77.8 77.8 183.4 121.6 293.4 121.6s215.6-43.7 293.4-121.6c162.1-162.2 162.1-425 0-587zM774 765.9a359.88 359.88 0 0 1-254.7 105.6c-95.5 0-187.1-37.9-254.8-105.6-140.5-140.5-140.5-369 0-509.5 67.5-67.5 159.2-105.6 254.8-105.6 95.5 0 187.2 37.9 254.8 105.6 140.4 140.5 140.4 369.1-0.1 509.5z" fill="currentColor" p-id="1061"></path><path d="M311.1 475.1v-32.7c42.4-33.9 67.3-81.2 74.6-141.9h60c-2.4 14.5-5.5 27.9-9.1 40h100v36.4c-8.5 160.1-82.5 274-221.9 341.9v-40c60.6-43.7 102.4-91.5 125.5-143.7-30.3-13.3-59.4-23-87.3-29.1v-40c41.2 4.9 75.8 14 103.7 27.3 9.7-30.3 16.4-69.1 20-116.4h-56.4c-18.1 41.2-54.5 74-109.1 98.2z m256.5 243.7V300.5H624v418.3h-56.4z m160-167.3c-36.4-35.2-67.9-59.4-94.6-72.8v-50.9c43.7 18.2 75.2 37 94.6 56.4v67.3z" fill="currentColor" p-id="1062"></path></svg>
-          <svg t="1711436214783" class="w-full h-full" v-else viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1434" width="32" height="32"><path d="M403.9 625v-35.7c57.5-31.3 83.8-94.4 78.8-189.5V396h-97.5v322.7h-60.1V354.9h157.6V293h60.1v61.9h157.6v288.9c1.2 48.8-23.8 72.5-75.1 71.3H584v-37.5h26.3c21.3 0 31.3-10.6 30-31.9V396.2h-97.6v3.8c-3.8 93.8 23.1 157 80.7 189.5v35.7c-52.5-20-89.5-50.7-110.7-92-22.4 43.7-58.7 74.3-108.8 91.8z" fill="currentColor" p-id="1435"></path><path d="M805.4 217.7C727.6 139.8 622 96.1 512 96.1s-215.6 43.7-293.4 121.6c-162 162-162 424.9 0 587C296.4 882.5 402 926.3 512 926.3s215.6-43.7 293.4-121.6c162.1-162.2 162.1-425 0-587z m-38.7 548.2A359.88 359.88 0 0 1 512 871.5c-95.5 0-187.1-37.9-254.8-105.6-140.5-140.5-140.5-369 0-509.5 67.5-67.5 159.2-105.6 254.8-105.6 95.5 0 187.2 37.9 254.8 105.6 140.4 140.5 140.4 369.1-0.1 509.5z" fill="currentColor" p-id="1436"></path></svg>
-        </div>
-      </li>
-    </ul>
-    <div class="absolute bottom-[10px] text-[#6c757d] text-[12px] text-center flex flex-col items-center max-[825px]:relative max-[835px]:bottom-0 max-[835px]:mt-[10px]">
+    <EnterItems :tools="toolsOnlineFilter" @link="gotoPage" :out-in-tag="true" />
+
+    <!-- footer 脚注 -->
+    <div class="absolute bottom-[10px] text-[#6c757d] text-[12px] text-center flex flex-col items-center max-[1100px]:relative max-[1100px]:bottom-0 max-[1100px]:mt-[10px]">
       <p class="mb-[8px]">工欲善其事，必先利其器</p>
       <p class="flex flex-row">
         <a-popover>
@@ -377,7 +405,7 @@
                 :src="mywx"
               />
             </p>
-            <p class="text-[#666] text-[14px]">如有问题或者有好的建议，欢迎扫码加我</p>
+            <p class="text-[#999] text-[14px]">如有任何问题或建议，欢迎随时联系</p>
           </template>
           <template #title>
             <span>联么我</span>
@@ -393,7 +421,7 @@
                 :src="wxzs"
               />
             </p>
-            <p class="text-[#666] text-[14px]">只要人人都献出一点爱，世间将变成美好的人间</p>
+            <p class="text-[#999] text-[14px]">只要人人都献出一点爱，世间将变成美好的人间</p>
           </template>
           <template #title>
             <span>赞赏我</span>

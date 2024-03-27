@@ -12,6 +12,7 @@ import JsonHelper from '../pages/JsonHelper.vue';
 import DiffHelper from '../pages/DiffHelper.vue';
 import ImgpHelper from '../pages/ImgHelper.vue';
 import RegexHelper from '../pages/RegexHelper.vue';
+import FormatJxyHelper from '../pages/FormatJxyHelper.vue';
 import Webview from '../pages/Webview.vue';
 
 // 2. 定义一些路由
@@ -63,6 +64,10 @@ const routes = [
     path: '/regex-helper',
     name: 'regex-helper',
     component: RegexHelper
+  },{ 
+    path: '/format-jxy-helper',
+    name: 'format-jxy-helper',
+    component: FormatJxyHelper
   },
   { 
     path: '/webview',
