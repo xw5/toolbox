@@ -37,6 +37,8 @@
   import svgeditor from '../assets/svgeditor.png';
   import codeFormat from '../assets/code-format.png';
   import formatJxyHelper from '../assets/format-jxy-helper.png';
+  import typescriptPlayground from '../assets/typescript-playground.png';
+  import variableNaming from '../assets/variable-naming.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -112,8 +114,8 @@
       img: regexHelper,
       pathName: 'regex-helper'
     },{
-      title: 'JSON-XML-YAML格式互转',
-      desc: 'JSON、XML、YAML格式互相转换工具',
+      title: 'JSON-XML-YAML-csv格式互转',
+      desc: 'JSON、XML、YAML、CSV格式互相转换工具',
       img: formatJxyHelper,
       pathName: 'format-jxy-helper'
     },{
@@ -135,10 +137,21 @@
       img: reactPlayground,
       pathName: 'https://fewismuch.github.io/react-playground'
     },{
+      title: 'Typescript Playground',
+      desc: 'Typescript在线演练场',
+      img: typescriptPlayground,
+      pathName: 'https://www.typescriptlang.org/play'
+    },{
       title: '代码格式化',
       desc: 'JSON/XML/YAML/HTML/CSS/JS/SQL/PHP代码格式化',
       img: codeFormat,
       pathName: 'http://www.codeformat.cn/xml.html'
+    },{
+      title: '变量命令',
+      desc: '变量命名神器',
+      img: variableNaming,
+      pathName: 'http://tool.h234.cn/rcode/index.html',
+      isOut: false
     },{
       title: 'iconfont',
       desc: '矢量图标库，提供矢量图标下载、在线存储、格式转换等功能',
@@ -192,7 +205,18 @@
       title: '代码段截图',
       desc: '漂亮代码段截图生成器',
       img: codeimage,
-      pathName: 'https://www.codepng.app/'
+      // pathName: 'https://www.codepng.app/',
+      urls: [
+      {
+          title: 'codepng(简单，便捷)',
+          url: 'https://www.codepng.app/',
+          isOut: false
+        },{
+          title: 'carbon(主题丰富，样式定义更自由)',
+          url: 'https://carbon.now.sh/',
+          isOut: true
+        }
+      ]
     },{
       title: '代码片段生成器',
       desc: '代码片段生成工具，辅助生成代码段',
@@ -392,8 +416,9 @@
       <h3 class="text-[#333] text-[16px] mr-[10px]" v-if="toolsOnlineFilter.length > 0">在线工具推荐</h3>
       <a-popover placement="top">
         <template #content>
-          <p class="text-[#6c757d] text-[14px]">在线工具我本是希望全部在vs code里打开的，但部分工具被禁止内嵌，不得不唤起外部浏览器打开</p>
-          <p class="text-[#6c757d] text-[14px]">如若你更喜欢统一外部打开方式，可以开启这个选项<a-switch class="ml-[5px]" v-model:checked="isOut" checked-children="开" un-checked-children="关" /></p>
+          <p class="text-[#6c757d] text-[14px]">1. 在线工具我本是希望全部在vs code里打开的，但部分工具被禁止内嵌，不得不唤起外部浏览器打开</p>
+          <p class="text-[#6c757d] text-[14px]">2. 如若你更喜欢统一外部打开方式，可以开启这个选项<a-switch class="ml-[5px]" v-model:checked="isOut" checked-children="开" un-checked-children="关" /></p>
+          <p class="text-[#6c757d] text-[14px]">2. 个人开发工具效率太低而且能力有限，插件通过iframe或外链的形式引入了第三方优秀工具，如有侵权，请联系我删除</p>
         </template>
         <template #title>
           <span>温馨提示</span>
