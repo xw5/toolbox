@@ -143,9 +143,36 @@
       pathName: 'https://www.typescriptlang.org/play'
     },{
       title: '代码格式化',
-      desc: 'JSON/XML/YAML/HTML/CSS/JS/SQL/PHP代码格式化',
+      desc: 'HTML/CSS/JS/XML/YAML/SQL代码格式化',
       img: codeFormat,
-      pathName: 'http://www.codeformat.cn/xml.html'
+      // pathName: 'http://www.codeformat.cn/xml.html'
+      urls: [
+        {
+          title: 'HTML格式化',
+          url: 'https://www.jyshare.com/front-end/47/',
+          isOut: false
+        },{
+          title: 'css格式化',
+          url: 'https://tool.lu/css/',
+          isOut: false
+        },{
+          title: 'js格式化',
+          url: 'https://tool.lu/js/',
+          isOut: false
+        },{
+          title: 'XML格式化',
+          url: 'https://www.jyshare.com/front-end/710/',
+          isOut: false
+        },{
+          title: 'YAML格式化',
+          url: 'https://verytoolz.com/yaml-formatter.html',
+          isOut: false
+        },{
+          title: 'SQl格式化',
+          url: 'https://tool.lu/sql/',
+          isOut: false
+        }
+      ]
     },{
       title: '变量命令',
       desc: '变量命名神器',
