@@ -21,18 +21,20 @@
 * diff助手： 轻量文本对比工具
 * 图片格式助手： webp,png,jpg,bmp格式互转
 * 正则助手： 正则可视化展示、测试工具
-* JSON-XML-YAML格式互转： JSON、XML、YAML格式互相转换工具
+* JSON-XML-YAML-CSV格式互转： JSON、XML、YAML、CSV格式互相转换工具
 
 **在线工具推荐**
 * Vue Playground： Vue的在线演练场
 * React Playground： React的在线演练场
 * Typescript Playground： Typescript在线演练场
+* 代码格式化： JSON/XML/YAML/HTML/CSS/JS/SQL/PHP代码格式化
 * 变量命令： 变量命名神器
 * iconfont： 矢量图标库，提供矢量图标下载、在线存储、格式转换等功能
 * 图片转ico： 图片转ico格式工具
 * 图片压缩： 好用的JPG/PNG/GIF/SVG图片压缩工具
 * 在线编辑器： 在线运行前端代码，分享代码，实时预览效果
 * 代码片段生成器： 代码片段生成工具，辅助生成代码段
+* 代码段截图： 漂亮代码段截图生成器
 * Can I use： 一款前端兼容性自查工具，查css、js等前端技术在各浏览器下的兼容情况
 * statcounter： 数据统计分析工具,查浏览器、屏幕分辨率等市场占比
 * SVG压缩合并工具： SVG压缩、合并、转base64、生成css行间svg
