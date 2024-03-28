@@ -187,3 +187,14 @@ export function timestampToTime(timestamp, fmt) {
   }
   return fmt;
 };
+
+/**
+ * a标签打开
+ * @param {string} url 
+ */
+export const alink = (url, target='_self') => {
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = target;
+  a.click();
+};

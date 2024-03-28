@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.ViewColumn.One,
       {
         retainContextWhenHidden: true, // 保证 Webview 所在页面进入后台时不被释放
-        enableScripts: true, // 运行 JS 执行
+        enableScripts: true // 运行 JS 执行
       }
     );
     panel.webview.html = getWebviewContent(context);
@@ -57,8 +57,8 @@ export function deactivate() { }
 
 function getWebviewContent(context: vscode.ExtensionContext) {
 	// const isProduction = context.extensionMode === vscode.ExtensionMode.Production;
-  const jsurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-ClD0aNPp.js');
-  const cssurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-ZaxLw2vw.css');
+  const jsurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-BcIfT4rA.js');
+  const cssurl = path.join(context.extensionPath, 'out/web/toolbox/dist', 'assets/index-CNpDSGWy.css');
 	const jsPath = vscode.Uri.file(jsurl);
 	const cssPath = vscode.Uri.file(cssurl);
 

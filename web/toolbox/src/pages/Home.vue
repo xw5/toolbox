@@ -5,7 +5,7 @@
   import { ArrowRightOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue';
   import EnterItems from '../components/EnterItems.vue';
   import { getVsCode } from '../utils/vscode.js';
-  import { timestampToTime } from '../utils/utils.js';
+  import { timestampToTime,alink } from '../utils/utils.js';
 
   import url from '../assets/url.png';
   import color from '../assets/color.png';
@@ -318,7 +318,8 @@
     if (tool.pathName && tool.pathName.startsWith('http')) {
       // 要求全部外部打开，或者它本身就要求外部打开的就全部外部唤起浏览器打开
       if (isOut.value || tool.isOut) {
-        window.open(tool.pathName);
+        // window.open(tool.pathName);
+        alink(tool.pathName, '_blank');
         return;
       }
       openWebview(tool);
@@ -330,7 +331,8 @@
           openWebview(tool);
           return;
         }
-        window.open(tool.urls[0].url);
+        // window.open(tool.urls[0].url);
+        alink(tool.pathName, '_blank');
       } else {
         showPicker(tool);
       }
@@ -399,7 +401,7 @@
         <QuestionCircleOutlined class="text-[#666] hover:text-[#1afa29]" />
       </a-popover>
     </div>
-    <EnterItems :tools="toolsOnlineFilter" @link="gotoPage" :out-in-tag="true" />
+    <EnterItems :tools="toolsOnlineFilter" @link="gotoPage" :out-in-tag="true" :isOut="isOut" />
 
     <!-- footer 脚注 -->
     <div class="text-[#6c757d] text-[12px] text-center flex flex-col items-center mt-[10px] footer">
