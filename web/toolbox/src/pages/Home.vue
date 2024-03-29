@@ -20,6 +20,7 @@
   import regexHelper from '../assets/regex-helper.png';
   import vuePlayground from '../assets/vue-playground.png';
   import reactPlayground from '../assets/react-playground.png';
+  import prettierPlayground from '../assets/prettier-playground.png';
   import codeimage from '../assets/codeimage.png';
   import compressImage from '../assets/compress-image.png';
   import onlineIde from '../assets/online-ide.png';
@@ -39,6 +40,7 @@
   import formatJxyHelper from '../assets/format-jxy-helper.png';
   import typescriptPlayground from '../assets/typescript-playground.png';
   import variableNaming from '../assets/variable-naming.png';
+  import tailwindcss from '../assets/tailwindcss.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -142,6 +144,11 @@
       img: typescriptPlayground,
       pathName: 'https://www.typescriptlang.org/play'
     },{
+      title: 'Prettier Playground',
+      desc: 'Prettier在线演练场',
+      img: prettierPlayground,
+      pathName: 'https://prettier.io/playground/'
+    },{
       title: '代码格式化',
       desc: 'HTML/CSS/JS/XML/YAML/SQL代码格式化',
       img: codeFormat,
@@ -183,8 +190,19 @@
       title: 'iconfont',
       desc: '矢量图标库，提供矢量图标下载、在线存储、格式转换等功能',
       img: iconfont,
-      pathName: 'https://www.iconfont.cn/',
-      isOut: true
+      // pathName: 'https://www.iconfont.cn/',
+      // isOut: true,
+      urls: [
+        {
+          title: 'iconfont(阿里旗下免费图标库)',
+          url: 'https://www.iconfont.cn/',
+          isOut: true
+        },{
+          title: 'IconPark免费图标库',
+          url: 'https://iconpark.oceanengine.com/home',
+          isOut: false
+        }
+      ]
     },{
       title: '图片转ico',
       desc: '图片转ico格式工具',
@@ -195,7 +213,7 @@
       desc: '好用的JPG/PNG/GIF/SVG图片压缩工具',
       img: compressImage,
       urls: [
-      {
+        {
           title: 'tinypng图片压缩（Webp/JPG/PNG, PNG压缩首选,一次最多20张，单张大小不能超5M）',
           url: 'https://tinypng.com/',
           isOut: true
@@ -234,7 +252,7 @@
       img: codeimage,
       // pathName: 'https://www.codepng.app/',
       urls: [
-      {
+        {
           title: 'codepng(简单，便捷)',
           url: 'https://www.codepng.app/',
           isOut: false
@@ -260,15 +278,41 @@
       img: dataStatistics,
       pathName: 'https://gs.statcounter.com/'
     },{
-      title: 'SVG压缩合并工具',
-      desc: 'SVG压缩、合并、转base64、生成css行间svg',
+      title: 'SVG助手',
+      desc: 'SVG压缩、合并、转base64、生成css行间svg,svg编辑器',
       img: svgHelper,
-      pathName: 'https://www.zhangxinxu.com/sp/svgo/'
+      // pathName: 'https://www.zhangxinxu.com/sp/svgo/',
+      urls: [
+        {
+          title: 'SVG压缩、合并、转base64、生成css行间svg',
+          url: 'https://www.zhangxinxu.com/sp/svgo/',
+          isOut: false
+        },{
+          title: 'SVG编辑器',
+          url: 'https://www.jyshare.com/more/svgeditor/',
+          isOut: false
+        }
+      ]
     },{
-      title: 'JSON格式化',
-      desc: 'JSON格式化，JSON转XML,CSV,YAML工具',
+      title: 'JSON助手',
+      desc: 'JSON格式化、转XML,CSV,YAML、可视化、编辑器',
       img: jsonHelper,
-      pathName: 'https://www.jyshare.com/front-end/53/'
+      // pathName: 'https://www.jyshare.com/front-end/53/'
+      urls:[
+        {
+          title: 'JSON格式化、转XML,CSV,YAML',
+          url: 'https://www.jyshare.com/front-end/53/',
+          isOut: false
+        },{
+          title: 'JSON可视化',
+          url: 'https://jsoncrack.com/editor',
+          isOut: false
+        },{
+          title: 'JSON编辑器',
+          url: 'https://www.hellokit.com.cn/json',
+          isOut: false
+        }
+      ]
     },{
       title: 'draw.io在线绘图',
       desc: '支持流程图、UML类图、组织结构图、泳道图、E-R图、文氏图等的绘制',
@@ -286,10 +330,21 @@
       img: excalidraw,
       pathName: 'https://excalidraw.com/'
     },{
-      title: 'SVG编辑器',
-      desc: 'SVG在线编辑器',
-      img: svgeditor,
-      pathName: 'https://www.jyshare.com/more/svgeditor/'
+      title: 'tailwindcss',
+      desc: 'tailwindcss官网，查询样式',
+      img: tailwindcss,
+      // pathName: 'https://tailwindcss.com/'
+      urls:[
+        {
+          title: '国内中文站',
+          url: 'https://tailwindcss.cn/',
+          isOut: false
+        },{
+          title: '国外英文站',
+          url: 'https://tailwindcss.com/',
+          isOut: false
+        }
+      ]
     },{
       title: '持续更新',
       desc: '其它实用工具努力接入中...',

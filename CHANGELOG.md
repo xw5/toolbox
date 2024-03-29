@@ -1,13 +1,18 @@
 # Change Log
 更新日志记录
-## [0.0.11] - 2024-03-28
+## [0.0.11] - 2024-03-29
 ### Added
 - Typescript Playground：Typescript在线演练场
+- Prettier Playground：Prettier在线演练场
+- JSON可视化：JSON Crack可视化json数据
+- JSON编辑器：JSON编辑器+验证+格式化
+- IconPark：IconPark免费图标库
 - 变量命令：变量命名神器
 
 ### Changed
 - 本地工具实现csv和json的互转
 - 代码段截图生成器引入定制更多的carbon
+- json、svg和图标工具合并入口
 - 优化了部分代码
 
 ## [0.0.10] - 2024-03-27
