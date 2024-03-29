@@ -47,4 +47,5 @@
 * SVG编辑器： SVG在线编辑器
 * JSON可视化：JSON Crack可视化json数据
 * JSON编辑器：JSON编辑器+验证+格式化
+* tailwindcss：tailwindcss官网，查询样式
 * 其他实用工具开发中...

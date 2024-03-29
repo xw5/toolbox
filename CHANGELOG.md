@@ -7,7 +7,9 @@
 - JSON可视化：JSON Crack可视化json数据
 - JSON编辑器：JSON编辑器+验证+格式化
 - IconPark：IconPark免费图标库
+- IconPark：IconPark免费图标库
 - 变量命令：变量命名神器
+- tailwindcss：tailwindcss官网，查询样式
 
 ### Changed
 - 本地工具实现csv和json的互转

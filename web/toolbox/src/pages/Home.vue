@@ -35,7 +35,7 @@
   import drawIo from '../assets/draw-io.png';
   import thinking from '../assets/thinking.png';
   import excalidraw from '../assets/excalidraw.png';
-  import svgeditor from '../assets/svgeditor.png';
+  // import svgeditor from '../assets/svgeditor.png';
   import codeFormat from '../assets/code-format.png';
   import formatJxyHelper from '../assets/format-jxy-helper.png';
   import typescriptPlayground from '../assets/typescript-playground.png';
