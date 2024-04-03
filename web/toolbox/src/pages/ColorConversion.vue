@@ -31,19 +31,19 @@ const colorComputed = (type: string) => {
         formState.value.colorhsv = convert.hex.hsv(formState.value.color16).join(',');
         break;
       case 'colorrgb':
-        formState.value.color16 = convert.rgb.hex(formState.value.colorrgb);
-        formState.value.colorhsl = convert.rgb.hsl(formState.value.colorrgb).join(',');
-        formState.value.colorhsv = convert.rgb.hsv(formState.value.colorrgb).join(',');
+        formState.value.color16 = convert.rgb.hex(formState.value.colorrgb.split(','));
+        formState.value.colorhsl = convert.rgb.hsl(formState.value.colorrgb.split(',')).join(',');
+        formState.value.colorhsv = convert.rgb.hsv(formState.value.colorrgb.split(',')).join(',');
         break;
       case 'colorhsl':
-        formState.value.color16 = convert.hsl.hex(formState.value.colorhsl);
-        formState.value.colorrgb = convert.hsl.rgb(formState.value.colorhsl).join(',');
-        formState.value.colorhsv = convert.hsl.hsv(formState.value.colorhsl).join(',');
+        formState.value.color16 = convert.hsl.hex(formState.value.colorhsl.split(','));
+        formState.value.colorrgb = convert.hsl.rgb(formState.value.colorhsl.split(',')).join(',');
+        formState.value.colorhsv = convert.hsl.hsv(formState.value.colorhsl.split(',')).join(',');
         break;
       case 'colorhsv':
-        formState.value.color16 = convert.hsv.hex(formState.value.colorhsv);
-        formState.value.colorrgb = convert.hsv.rgb(formState.value.colorhsv).join(',');
-        formState.value.colorhsl = convert.hsv.hsl(formState.value.colorhsv).join(',');
+        formState.value.color16 = convert.hsv.hex(formState.value.colorhsv.split(','));
+        formState.value.colorrgb = convert.hsv.rgb(formState.value.colorhsv.split(',')).join(',');
+        formState.value.colorhsl = convert.hsv.hsl(formState.value.colorhsv.split(',')).join(',');
         break;
       default:
         break;

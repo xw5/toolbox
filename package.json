@@ -2,7 +2,7 @@
   "name": "toolboxs",
   "displayName": "Toolboxs",
   "description": "开发辅助工具箱,你的编程好帮手",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "publisher": "msxw",
   "engines": {
     "vscode": "^1.46.0"

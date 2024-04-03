@@ -151,7 +151,7 @@ const copy = (url) => {
     </ul>
     <div class="w-full flex flex-col mt-[10px]">
       <p class="text-[16px] text-[#333] mb-[5px]">以下是常见符号的 URL 编码表格，包括符号、URL编码和描述：</p>
-      <table class="urlcode-table" cellspacing="0">
+      <table class="urlcode-table text-[#333]" cellspacing="0">
         <thead class="table-secondary">
           <tr>
             <th>符号</th>

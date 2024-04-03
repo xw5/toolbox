@@ -1,5 +1,10 @@
 # Change Log
 更新日志记录
+## [0.0.12] - 2024-04-03
+### Changed
+- 解决urlcode下面编码字体颜色太淡
+- 解决颜色转换错误的BUG
+
 ## [0.0.11] - 2024-03-29
 ### Added
 - Typescript Playground：Typescript在线演练场
