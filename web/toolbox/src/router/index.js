@@ -14,6 +14,7 @@ import ImgpHelper from '../pages/ImgHelper.vue';
 import RegexHelper from '../pages/RegexHelper.vue';
 import FormatJxyHelper from '../pages/FormatJxyHelper.vue';
 import Webview from '../pages/Webview.vue';
+import Placeholder from '../pages/Placeholder.vue';
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -68,6 +69,10 @@ const routes = [
     path: '/format-jxy-helper',
     name: 'format-jxy-helper',
     component: FormatJxyHelper
+  },{ 
+    path: '/placeholder-helper',
+    name: 'placeholder-helper',
+    component: Placeholder
   },
   { 
     path: '/webview',

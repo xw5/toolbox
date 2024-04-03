@@ -41,6 +41,7 @@
   import typescriptPlayground from '../assets/typescript-playground.png';
   import variableNaming from '../assets/variable-naming.png';
   import tailwindcss from '../assets/tailwindcss.png';
+  import placeholderHelper from '../assets/placeholder-helper.png';
 
   const router = useRouter();
   // defineProps<{ msg: string }>()
@@ -120,6 +121,11 @@
       desc: 'JSON、XML、YAML、CSV格式互相转换工具',
       img: formatJxyHelper,
       pathName: 'format-jxy-helper'
+    },{
+      title: '占位符工具',
+      desc: '文本，图片临时占位内容生成工具',
+      img: placeholderHelper,
+      pathName: 'placeholder-helper'
     },{
       title: '持续更新',
       desc: '其它实用工具开发中...',

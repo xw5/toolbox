@@ -22,6 +22,7 @@
 * 图片格式助手： webp,png,jpg,bmp格式互转
 * 正则助手： 正则可视化展示、测试工具
 * JSON-XML-YAML-CSV格式互转： JSON、XML、YAML、CSV格式互相转换工具
+* 占位符工具： 文本，图片临时占位内容生成工具
 
 **在线工具推荐**
 * Vue Playground： Vue的在线演练场
